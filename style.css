@@ -1,0 +1,31 @@
+:root {
+  --main-text: #C4C4C4;
+  --t-highlight: #c2ffc7;
+  --background: #111111;
+}
+
+html,
+body {
+  color: var(--main-text);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  text-rendering: optimizeSpeed;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+#main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+#intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

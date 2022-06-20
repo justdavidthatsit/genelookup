@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>gfinder</title>
+  <meta name="description" content="doing some testing">
+  <meta name="author" content="david kvasyuk">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <meta property="og:title" content="gfinder">
+  <meta property="og:type" content="website">
+  <!-- <meta property="og:url" content="PUTAURLHEREWHENYOUGETONE"> -->
+  <meta property="og:description" content="doing some testing">
+  <!-- <meta property="og:image" content="PUTANIMAGEHEREWHENYOUGETONE"> -->
+
+  <link rel="icon" href="img/iconxD.webp">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="hub.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="intro">
+      <div style="display: flex; align-items: center;">
+        <img src="/img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;"><h1>gfinder test</h1>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <input id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1" placeholder="Gene...">
+        <button onclick="window.seeker()" style="width: 80px; height: 40px; border-radius: 5px;">search</button>
+      </div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>SNP</th>
+          <th>CHR</th>
+          <th>POS</th>
+          <th>ID</th>
+          <th>REF</th>
+          <th>ALT</th>
+          <th>Effect</th>
+          <th>AnyIsLof</th>
+          <th>Deleterious</th>
+          <th>Gene</th>
+          <th>FracTrAffected</th>
+          <th>HGVSc</th>
+          <th>HGVSp</th>
+          <th>N_HOM</th>
+          <th>N_HET</th>
+          <th>N_REF</th>
+          <th>AF</th>
+          <th>N_HOM_AA</th>
+          <th>N_HET_AA</th>
+          <th>N_REF_AA</th>
+          <th>AF_AA</th>
+          <th>N_HOM_EA</th>
+          <th>N_HET_EA</th>
+          <th>N_REF_EA</th>
+          <th>AF_EA</th>
+          <th>N_HOM_HA</th>
+          <th>N_HET_HA</th>
+          <th>N_REF_HA</th>
+          <th>AF_HA</th>
+        </tr>
+      </thead>
+      <div id="loader" style="display: none">Loading...</div>
+      <tbody id="data-output">
+
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+<footer>
+  
+</footer>
+</html>
