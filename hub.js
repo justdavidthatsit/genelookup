@@ -68,7 +68,7 @@ function tableBuilder(data){
 async function seeker(){
   var q = cbid("searchq").value;
   if(q.length<1){
-    console.log("bruh");
+    console.log("thats not doing anything");
     return;
   } else {
   console.log(q);
