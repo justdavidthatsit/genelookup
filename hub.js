@@ -1,24 +1,22 @@
 // dependancies and shortcuts ------------------------------------- //
 
-// cbid = Call By ID
-const cbid = function(wheretheidsgonnabe) {
-  return document.getElementById(wheretheidsgonnabe);
-};
 
 async function tableSearcher(val){
-  const groups = await fetch("converteddata.json");
+  const groups = await fetch(jsonStream.output); //bioconvert.json
   const groupData = await groups.json();
   var filterd = []
 
   for (var i=0; i<groupData.length; i++){
     val = val.toLowerCase()
-    var name = groupData[i].Gene.toLowerCase()
+    var name = groupData[i].Gene.toLowerCase() // <<< - HERE SEARCHES LIKE "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()"
     if (name.includes(val)){
       filterd.push(groupData[i])
     }
   }
   return filterd
 }
+
+
 
 function tableBuilder(data){
   function createRowThingy(name){
@@ -66,7 +64,7 @@ function tableBuilder(data){
 }
 
 async function seeker(){
-  var q = cbid("searchq").value;
+  var q = document.getElementById("searchq").value;
   if(q.length<1){
     console.log("thats not doing anything");
     return;
