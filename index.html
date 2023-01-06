@@ -32,8 +32,13 @@
         <img src="img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;"><h1>gfinder test</h1>
       </div>
       <div style="display: flex; align-items: center;">
-        <input id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1" placeholder="Gene...">
-        <button onclick="window.seeker()" style="width: 80px; height: 40px; border-radius: 5px;">search</button>
+
+        <form action="UTDQuery.asp" method="post">
+          <input id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1" placeholder="Enter text here" required>
+        </form>
+
+        <button onclick="window.seeker()" style="width: 80px; height: 40px; border-radius: 5px; margin-left: 10px;">Search</button>
+
       </div>
     </div>
     
