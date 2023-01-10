@@ -78,3 +78,7 @@ async function seeker(){
   });
   }
 };
+
+window.onload = function() {
+  seeker();
+};
