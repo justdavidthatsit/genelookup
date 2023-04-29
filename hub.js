@@ -2,7 +2,7 @@
 
 
 async function tableSearcher(val){
-  const groups = await fetch("converteddata.json"); //bioconvert.json
+  const groups = await fetch("newdata.json"); //bioconvert.json
   const groupData = await groups.json();
   var filterd = []
 

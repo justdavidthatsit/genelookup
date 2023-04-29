@@ -1,7 +1,8 @@
 :root {
   --main-text: #C4C4C4;
-  --t-highlight: #c2ffc7;
+  --t-highlight: #a8ffc9;
   --background: #151818;
+  --backgroundbutlessharsh: #222929;
 }
 
 html,
@@ -28,4 +29,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+table {
+  border-style: solid;
+  border-color: var(--t-highlight);
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+table th {
+  border-bottom: 1px solid var(--t-highlight);
+  border-right: 1px solid var(--t-highlight);
+}
+
+table td {
+  border-bottom: 1px solid var(--backgroundbutlessharsh);
+  border-right: 1px solid var(--backgroundbutlessharsh);
+  padding: 5px 5px;
 }

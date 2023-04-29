@@ -8,7 +8,8 @@
   <title>gfinder</title>
   <meta name="description" content="doing some testing">
   <meta name="author" content="david kvasyuk">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
   <meta property="og:title" content="gfinder">
   <meta property="og:type" content="website">
@@ -21,12 +22,12 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
-  <script src="startup.js"></script>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="hub.js"></script>
 </head>
@@ -35,24 +36,22 @@
   <div id="main">
     <div id="intro">
       <div style="display: flex; align-items: center;">
-        <img src="img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;"><h1>gfinder test</h1>
+        <img src="img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;">
+        <h1>gfinder test (new dataset)</h1>
       </div>
       <div style="display: flex; align-items: center;">
 
-        <form name="GetData" id="getData" action="https://nerdbody.com/UTDQuery.asp" method="Post">
+        <form name="GetData" id="getData">
           <input type="hidden" name="ThisPage" value="1">
-          <input name="keywordSearch" id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1" value="CLSTN1" required>
-          <input type="submit" name="submit" id="submit" value="Filter Data">
+          <input name="keywordSearch" id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1"
+            value="CLSTN1" required>
         </form>
-
-        <!--<button onclick="window.seeker()" style="width: 80px; height: 40px; border-radius: 5px; margin-left: 10px;">Search</button>-->
+        <button onclick="window.seeker()" style="height: 40px; border-radius: 5px; margin-left: 10px;">Search "Gene"</button>
 
       </div>
     </div>
 
-    <!-- <iframe style="height: 100%;" name="frametobe" src="https://nerdbody.com/UTDQuery.asp"> -->
-    
-    <table id="example" class="table table-dark table-striped table-bordered border-success m-3">
+    <table id="example">
       <thead>
         <tr>
           <th>SNP</th>
@@ -86,16 +85,20 @@
           <th>AF_HA</th>
         </tr>
       </thead>
+      <div id="loader" style="display: none">Loading...</div>
       <tbody id="data-output">
 
       </tbody>
     </table>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 </body>
 
 <footer>
-  
+
 </footer>
+
 </html>
