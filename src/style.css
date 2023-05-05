@@ -3,6 +3,7 @@
   --t-highlight: #a8ffc9;
   --background: #151818;
   --backgroundbutlessharsh: #222929;
+  --linefortable: #353d35;
 }
 
 html,
@@ -30,6 +31,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+#tablecontainer {
+  padding: 10px
+}
 
 table {
   border-style: solid;
@@ -44,7 +48,7 @@ table th {
 }
 
 table td {
-  border-bottom: 1px solid var(--backgroundbutlessharsh);
+  border-bottom: 1px solid var(--linefortable);
   border-right: 1px solid var(--backgroundbutlessharsh);
   padding: 5px 5px;
 }

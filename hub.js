@@ -8,11 +8,14 @@ async function tableSearcher(val){
 
   for (var i=0; i<groupData.length; i++){
     val = val.toLowerCase()
-    var name = groupData[i].Gene.toLowerCase() // <<< - HERE SEARCHES LIKE "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()"
+    var name = groupData[i].Gene.toLowerCase() // <<< - "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()" < - [NEW] maybe include a dependancy for what to search by?
     if (name.includes(val)){
       filterd.push(groupData[i])
     }
   }
+  filterd.sort((a, b) => {
+    return ((a.AF_HA+a.N_HET_HA)-(b.AF_HA+b.N_HET_HA)) // <<< - this is where you put the formula, maybe include dependancy for what to sort it by
+  });
   return filterd
 }
 
@@ -59,6 +62,7 @@ function tableBuilder(data){
     tr.appendChild(createRowThingy(data[val].N_HET_HA));
     tr.appendChild(createRowThingy(data[val].N_REF_HA));
     tr.appendChild(createRowThingy(data[val].AF_HA));
+    tr.appendChild(createRowThingy((data[val].AF_HA)+(data[val].N_HET_HA)));
     table.appendChild(tr);
   }
 }
