@@ -14,7 +14,8 @@ async function tableSearcher(val){
     }
   }
   filterd.sort((a, b) => {
-    return ((a.AF_HA+a.N_HET_HA)-(b.AF_HA+b.N_HET_HA)) // <<< - this is where you put the formula, maybe include dependancy for what to sort it by
+    //return (( a.AF_HA+a.N_HET_HA )-( b.AF_HA+b.N_HET_HA )) // <<< - this is where you put the formula, maybe include dependancy for what to sort it by
+    return (( 1-(Math.pow((2*(b.N_REF)*(b.N_HET))/(2*((b.N_REF)+(b.N_HET)+(b.N_HOM))),2)) )-( 1-(Math.pow((2*(a.N_REF)*(a.N_HET))/(2*((a.N_REF)+(a.N_HET)+(a.N_HOM))),2)) ))
   });
   return filterd
 }
@@ -46,23 +47,26 @@ function tableBuilder(data){
     tr.appendChild(createRowThingy(data[val].FracTrAffected));
     tr.appendChild(createRowThingy(data[val].HGVSc));
     tr.appendChild(createRowThingy(data[val].HGVSp));
-    tr.appendChild(createRowThingy(data[val].N_HOM));
-    tr.appendChild(createRowThingy(data[val].N_HET));
-    tr.appendChild(createRowThingy(data[val].N_REF));
+    tr.appendChild(createRowThingy(data[val].N_HOM)); // 1
+    tr.appendChild(createRowThingy(data[val].N_HET)); // 1
+    tr.appendChild(createRowThingy(data[val].N_REF)); // 1
     tr.appendChild(createRowThingy(data[val].AF));
-    tr.appendChild(createRowThingy(data[val].N_HOM_AA));
-    tr.appendChild(createRowThingy(data[val].N_HET_AA));
-    tr.appendChild(createRowThingy(data[val].N_REF_AA));
+    tr.appendChild(createRowThingy(data[val].N_HOM_AA)); // 2
+    tr.appendChild(createRowThingy(data[val].N_HET_AA)); // 2
+    tr.appendChild(createRowThingy(data[val].N_REF_AA)); // 2
     tr.appendChild(createRowThingy(data[val].AF_AA));
-    tr.appendChild(createRowThingy(data[val].N_HOM_EA));
-    tr.appendChild(createRowThingy(data[val].N_HET_EA));
-    tr.appendChild(createRowThingy(data[val].N_REF_EA));
+    tr.appendChild(createRowThingy(data[val].N_HOM_EA)); // 3
+    tr.appendChild(createRowThingy(data[val].N_HET_EA)); // 3
+    tr.appendChild(createRowThingy(data[val].N_REF_EA)); // 3
     tr.appendChild(createRowThingy(data[val].AF_EA));
-    tr.appendChild(createRowThingy(data[val].N_HOM_HA));
-    tr.appendChild(createRowThingy(data[val].N_HET_HA));
-    tr.appendChild(createRowThingy(data[val].N_REF_HA));
+    tr.appendChild(createRowThingy(data[val].N_HOM_HA)); // 4
+    tr.appendChild(createRowThingy(data[val].N_HET_HA)); // 4
+    tr.appendChild(createRowThingy(data[val].N_REF_HA)); // 4
     tr.appendChild(createRowThingy(data[val].AF_HA));
-    tr.appendChild(createRowThingy((data[val].AF_HA)+(data[val].N_HET_HA)));
+    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF)*(data[val].N_HET))/(2*((data[val].N_REF)+(data[val].N_HET)+(data[val].N_HOM))),2))));
+    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_AA)*(data[val].N_HET_AA))/(2*((data[val].N_REF_AA)+(data[val].N_HET_AA)+(data[val].N_HOM_AA))),2))));
+    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_EA)*(data[val].N_HET_EA))/(2*((data[val].N_REF_EA)+(data[val].N_HET_EA)+(data[val].N_HOM_EA))),2))));
+    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_HA)*(data[val].N_HET_HA))/(2*((data[val].N_REF_HA)+(data[val].N_HET_HA)+(data[val].N_HOM_HA))),2))));
     table.appendChild(tr);
   }
 }
