@@ -1,16 +1,30 @@
 // dependancies and shortcuts ------------------------------------- //
 
 
-async function tableSearcher(val){
+async function tableSearcher(gne, mut, mut1p){
   const groups = await fetch("newdata.json"); //bioconvert.json
   const groupData = await groups.json();
   var filterd = []
 
+  // IF name includes val AND if the mutation includes its said value AND if mutations present is checked, check for N_HET = 1 
+
   for (var i=0; i<groupData.length; i++){
-    val = val.toLowerCase()
+    gne = gne.toLowerCase()
+    mut = mut.toLowerCase()
+    mut1p = mut1p
     var name = groupData[i].Gene.toLowerCase() // <<< - "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()" < - [NEW] maybe include a dependancy for what to search by?
-    if (name.includes(val)){
-      filterd.push(groupData[i])
+    var mutation = groupData[i].Effect.toLowerCase()
+    var mut1person = groupData[i].N_HET
+    switch (mut1p) {
+      case true:
+        if (name.includes(gne) && mutation.includes(mut) && mut1person==1){
+          filterd.push(groupData[i])
+        };
+        break;
+      case false:
+        if (name.includes(gne) && mutation.includes(mut)){
+          filterd.push(groupData[i])
+        }
     }
   }
   filterd.sort((a, b) => {
@@ -63,23 +77,27 @@ function tableBuilder(data){
     tr.appendChild(createRowThingy(data[val].N_HET_HA)); // 4
     tr.appendChild(createRowThingy(data[val].N_REF_HA)); // 4
     tr.appendChild(createRowThingy(data[val].AF_HA));
+    if((data[val].N_HOM)==0 || (data[val].N_HET)==0 || (data[val].N_REF)==0){ //HWE CHECK 1
+      tr.appendChild(createRowThingy(data[val].N_HET));
+    } else {
+      tr.appendChild(createRowThingy( (data[val].N_HOM)+(data[val].N_HET)+(data[val].N_REF) )); // HWE formula here
+    };
     tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF)*(data[val].N_HET))/(2*((data[val].N_REF)+(data[val].N_HET)+(data[val].N_HOM))),2))));
-    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_AA)*(data[val].N_HET_AA))/(2*((data[val].N_REF_AA)+(data[val].N_HET_AA)+(data[val].N_HOM_AA))),2))));
-    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_EA)*(data[val].N_HET_EA))/(2*((data[val].N_REF_EA)+(data[val].N_HET_EA)+(data[val].N_HOM_EA))),2))));
-    tr.appendChild(createRowThingy(1-(Math.pow((2*(data[val].N_REF_HA)*(data[val].N_HET_HA))/(2*((data[val].N_REF_HA)+(data[val].N_HET_HA)+(data[val].N_HOM_HA))),2))));
     table.appendChild(tr);
   }
 }
 
 async function seeker(){
-  var q = document.getElementById("searchq").value;
+  var q = document.getElementById("genesearchbox").value;
+  var mut = document.getElementById("mutationsearchbox").value;
+  var mut1person = document.getElementById("mutations1personbox").checked;
   if(q.length<1){
     console.log("thats not doing anything");
     return;
   } else {
-  console.log(q);
+  console.log(q, mut, mut1person);
   var data
-  tableSearcher(q).then(x=>{
+  tableSearcher(q,mut,mut1person).then(x=>{
     data = x
     console.log(data);
     tableBuilder(data);

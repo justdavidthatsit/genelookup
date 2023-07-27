@@ -27,21 +27,53 @@
 <body>
   <div id="main">
     <div id="intro">
+
       <div style="display: flex; align-items: center;">
         <img src="img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;">
-        <h1>gfinder test (new dataset)</h1>
+        <h1>gfinder testing site</h1>
       </div>
+
       <div style="display: flex; align-items: center;">
 
-        <form name="GetData" id="getData">
-          <input type="hidden" name="ThisPage" value="1">
-          <input name="keywordSearch" id="searchq" style="height: 40px; border-radius: 5px;" type="text" minlength="1"
-            value="CLSTN" required>
+        <form name="GetData" id="getData" style="display: flex; flex-direction: column;">
+
+          <div>
+            <label for="genesearchbox">Gene:</label> <!-- screen reader accessibility -->
+            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="LDL">
+          </div>
+
+          <!-- MUTATION SEARCH FIELD -->
+          <div>
+            <label for="mutationsearchbox">Mutation:</label> <!-- screen reader accessibility -->
+            <select id="mutationsearchbox" name="mutationsubmission">
+              <option value="frameshift">frameshift</option>
+              <option value="synonymous">synonymous</option>
+              <option value="intronic">intronic</option>
+              <option value="upstream">upstream</option>
+              <option value="downstream">downstream</option>
+              <option value="3_prime_UTR">3_prime_UTR</option>
+              <option value="5_prime_UTR">5_prime_UTR</option>
+              <option value="splice_donor">splice_donor</option>
+              <option value="splice_acceptor">splice_acceptor</option>
+              <option value="stop_lost">stop_lost</option>
+              <option value="stop_gained">stop_gained</option>
+              <option value="missense">missense</option>
+            </select>
+          </div>
+
+          <!-- MUTATIONS PRESENT IN ONLY 1 PERSON SEARCH FIELD -->
+          <div>
+            <label for="mutations1personbox">Mutations present in only 1 person?</label> <!-- screen reader accessibility -->
+            <input type="checkbox" id="mutations1personbox" name="mutations1personbox">
+          </div>
+          
         </form>
-        <button onclick="window.seeker()" style="height: 40px; border-radius: 5px; margin-left: 10px;">Search
-          "Gene"</button>
+
+        <button onclick="window.seeker()" style="height: 40px; border-radius: 5px; margin-left: 10px;">Search</button>
 
       </div>
+
+
     </div>
     <div id="tablecontainer">
       <table id="example" class="table-sortable">
@@ -76,10 +108,7 @@
             <th>N_HET_HA</th>
             <th>N_REF_HA</th>
             <th>AF_HA</th>
-            <th>Rq</th>
-            <th>RAAq</th>
-            <th>REAq</th>
-            <th>RHAq</th>
+            <th>HWE deviation</th>
           </tr>
         </thead>
         <div id="loader" style="display: none">Loading...</div>
