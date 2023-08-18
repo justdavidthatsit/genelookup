@@ -1,7 +1,10 @@
-// dependancies and shortcuts ------------------------------------- //
+// "What are the numbers for in the switch cases?"          //
+// The numbers in the switch cases are there to keep track  //
+// of what we're looking for. So, everything initially      //
+// explained in 2* is what's being checked for/notes on     //
+// each following entry with a 2* at the end and so on.     //
 
-
-async function tableSearcher(gne, mut, mut1p){
+async function tableSearcher(gne, mut, mut2, mut1p){
   const groups = await fetch("newdata.json"); //bioconvert.json
   const groupData = await groups.json();
   var filterd = []
@@ -11,19 +14,37 @@ async function tableSearcher(gne, mut, mut1p){
   for (var i=0; i<groupData.length; i++){
     gne = gne.toLowerCase()
     mut = mut.toLowerCase()
+    mut2 = mut2.toLowerCase()
     mut1p = mut1p
     var name = groupData[i].Gene.toLowerCase() // <<< - "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()" < - [NEW] maybe include a dependancy for what to search by?
     var mutation = groupData[i].Effect.toLowerCase()
     var mut1person = groupData[i].N_HET
-    switch (mut1p) {
+    switch (mut1p) { //2* checking for if you only want mutations present in 1 person
       case true:
-        if (name.includes(gne) && mutation.includes(mut) && mut1person==1){
-          filterd.push(groupData[i])
-        };
-        break;
+        switch (mut2) { //3* checking for if there is a second mutation you want to search for
+          case "no":
+            if (name == gne && mutation.includes(mut) && mut1person==1){ //1* changed "name.includes(gne)" to "name == gne" for SPECIFIC search
+              filterd.push(groupData[i])
+            };
+            break;
+          default:
+            if (name == gne && (mutation.includes(mut) || mutation.includes(mut2)) && mut1person==1){ //1*
+              filterd.push(groupData[i])
+            };
+            break;
+        }
       case false:
-        if (name.includes(gne) && mutation.includes(mut)){
-          filterd.push(groupData[i])
+        switch (mut2) { //3*
+          case "no":
+            if (name == gne && mutation.includes(mut)){ //1*
+              filterd.push(groupData[i])
+            }
+            break;
+          default:
+            if (name == gne && (mutation.includes(mut) || mutation.includes(mut2))){ //1*
+              filterd.push(groupData[i])
+            }
+            break;
         }
     }
   }
@@ -90,14 +111,15 @@ function tableBuilder(data){
 async function seeker(){
   var q = document.getElementById("genesearchbox").value;
   var mut = document.getElementById("mutationsearchbox").value;
+  var mut2 = document.getElementById("mutationsearchbox2").value;
   var mut1person = document.getElementById("mutations1personbox").checked;
   if(q.length<1){
     console.log("thats not doing anything");
     return;
   } else {
-  console.log(q, mut, mut1person);
+  console.log(q, mut, mut2, mut1person);
   var data
-  tableSearcher(q,mut,mut1person).then(x=>{
+  tableSearcher(q, mut, mut2, mut1person).then(x=>{
     data = x
     console.log(data);
     tableBuilder(data);

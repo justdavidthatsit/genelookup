@@ -35,17 +35,32 @@
 
       <div style="display: flex; align-items: center;">
 
-        <form name="GetData" id="getData" style="display: flex; flex-direction: column;">
+        <form name="GetData" id="getData" style="display: flex; flex-direction: column;" onSubmit="return false;">
 
           <div>
-            <label for="genesearchbox">Gene:</label> <!-- screen reader accessibility -->
-            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="LDL">
+            <label for="genesearchbox">Gene*:</label> <!-- screen reader accessibility -->
+            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="CFAP74">
           </div>
 
           <!-- MUTATION SEARCH FIELD -->
           <div>
             <label for="mutationsearchbox">Mutation:</label> <!-- screen reader accessibility -->
             <select id="mutationsearchbox" name="mutationsubmission">
+              <option value="frameshift">frameshift</option>
+              <option value="synonymous">synonymous</option>
+              <option value="intronic">intronic</option>
+              <option value="upstream">upstream</option>
+              <option value="downstream">downstream</option>
+              <option value="3_prime_UTR">3_prime_UTR</option>
+              <option value="5_prime_UTR">5_prime_UTR</option>
+              <option value="splice_donor">splice_donor</option>
+              <option value="splice_acceptor">splice_acceptor</option>
+              <option value="stop_lost">stop_lost</option>
+              <option value="stop_gained">stop_gained</option>
+              <option value="missense">missense</option>
+            </select>
+            <select id="mutationsearchbox2" name="mutationsubmission2">
+              <option value="no">N/A</option>
               <option value="frameshift">frameshift</option>
               <option value="synonymous">synonymous</option>
               <option value="intronic">intronic</option>
@@ -72,6 +87,7 @@
         <button onclick="window.seeker()" style="height: 40px; border-radius: 5px; margin-left: 10px;">Search</button>
 
       </div>
+      <p1 style="color: slategrey; font-size: 14px;">*this is a SPECIFIC field, i.e searching "LDLR" will ONLY show LDLR and NOT other entries such as LDLRAP1, LDLRAD1, etc</p1>
 
 
     </div>
