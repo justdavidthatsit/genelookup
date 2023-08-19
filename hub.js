@@ -23,16 +23,17 @@ async function tableSearcher(gne, mut, mut2, mut1p){
       case true:
         switch (mut2) { //3* checking for if there is a second mutation you want to search for
           case "no":
-            if (name == gne && mutation.includes(mut) && mut1person==1){ //1* changed "name.includes(gne)" to "name == gne" for SPECIFIC search
+            if (mut1person==1 && name == gne && mutation.includes(mut)){ //1* changed "name.includes(gne)" to "name == gne" for SPECIFIC search
               filterd.push(groupData[i])
             };
             break;
           default:
-            if (name == gne && (mutation.includes(mut) || mutation.includes(mut2)) && mut1person==1){ //1*
+            if (name == gne && mut1person==1 && (mutation.includes(mut) || mutation.includes(mut2))){ //1*
               filterd.push(groupData[i])
             };
             break;
         }
+      break
       case false:
         switch (mut2) { //3*
           case "no":
