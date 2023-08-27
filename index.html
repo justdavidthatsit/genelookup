@@ -36,55 +36,66 @@
       <div style="display: flex; align-items: center;">
 
         <form name="GetData" id="getData" style="display: flex; flex-direction: column;" onSubmit="return false;">
-
+          <br>
           <div>
             <label for="genesearchbox">Gene*:</label> <!-- screen reader accessibility -->
             <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="CFAP74">
           </div>
 
           <!-- MUTATION SEARCH FIELD -->
+          <br>
           <div>
-            <label for="mutationsearchbox">Mutation:</label> <!-- screen reader accessibility -->
-            <select id="mutationsearchbox" name="mutationsubmission">
-              <option value="frameshift">frameshift</option>
-              <option value="synonymous">synonymous</option>
-              <option value="intronic">intronic</option>
-              <option value="upstream">upstream</option>
-              <option value="downstream">downstream</option>
-              <option value="3_prime_UTR">3_prime_UTR</option>
-              <option value="5_prime_UTR">5_prime_UTR</option>
-              <option value="splice_donor">splice_donor</option>
-              <option value="splice_acceptor">splice_acceptor</option>
-              <option value="stop_lost">stop_lost</option>
-              <option value="stop_gained">stop_gained</option>
-              <option value="missense">missense</option>
-            </select>
-            <select id="mutationsearchbox2" name="mutationsubmission2">
-              <option value="no">N/A</option>
-              <option value="frameshift">frameshift</option>
-              <option value="synonymous">synonymous</option>
-              <option value="intronic">intronic</option>
-              <option value="upstream">upstream</option>
-              <option value="downstream">downstream</option>
-              <option value="3_prime_UTR">3_prime_UTR</option>
-              <option value="5_prime_UTR">5_prime_UTR</option>
-              <option value="splice_donor">splice_donor</option>
-              <option value="splice_acceptor">splice_acceptor</option>
-              <option value="stop_lost">stop_lost</option>
-              <option value="stop_gained">stop_gained</option>
-              <option value="missense">missense</option>
-            </select>
+            <label for="mutationsearchbox">Mutation:</label><br> <!-- screen reader accessibility -->
+            <label for="ms1">
+              <input type="checkbox" name="mutationoption" value="frameshift" id="ms1"> frameshift
+            </label>
+            <label for="ms2">
+              <input type="checkbox" name="mutationoption" value="synonymous" id="ms2"> synonymous
+            </label>
+            <label for="ms3">
+              <input type="checkbox" name="mutationoption" value="intronic" id="ms3"> intronic
+            </label>
+            <label for="ms4">
+              <input type="checkbox" name="mutationoption" value="upstream" id="ms4"> upstream
+            </label>
+            <label for="ms5">
+              <input type="checkbox" name="mutationoption" value="downstream" id="ms5"> downstream
+            </label>
+            <br>
+            <label for="ms6">
+              <input type="checkbox" name="mutationoption" value="3_prime_UTR" id="ms6"> 3_prime_UTR
+            </label>
+            <label for="ms7">
+              <input type="checkbox" name="mutationoption" value="5_prime_UTR" id="ms7"> 5_prime_UTR
+            </label>
+            <label for="ms8">
+              <input type="checkbox" name="mutationoption" value="splice_donor" id="ms8"> splice_donor
+            </label>
+            <label for="ms9">
+              <input type="checkbox" name="mutationoption" value="splice_acceptor" id="ms9"> splice_acceptor
+            </label>
+            <br>
+            <label for="ms10">
+              <input type="checkbox" name="mutationoption" value="stop_lost" id="ms10"> stop_lost
+            </label>
+            <label for="ms11">
+              <input type="checkbox" name="mutationoption" value="stop_gained" id="ms11"> stop_gained
+            </label>
+            <label for="ms12">
+              <input type="checkbox" name="mutationoption" value="missense" id="ms12"> missense
+            </label>
           </div>
 
-          <!-- MUTATIONS PRESENT IN ONLY 1 PERSON SEARCH FIELD -->
+          <!-- MUTATIONS PRESENT IN ONLY X PEOPLE SEARCH FIELD -->
+          <br>
           <div>
-            <label for="mutations1personbox">Mutations present in only 1 person?</label> <!-- screen reader accessibility -->
-            <input type="checkbox" id="mutations1personbox" name="mutations1personbox">
+            <label for="mutations1personbox">Number of mutations present in how many people?<span><br></span>(leave blank or 0 if you don't want to search for this)</label> <!-- screen reader accessibility -->
+            <input style="width: 80px;" type="number" min="0" oninput="validity.valid||(value='');" id="numinhowmanyppl" placeholder="" name="mutations1personbox" value="">
           </div>
           
         </form>
 
-        <button onclick="window.seeker()" style="height: 40px; border-radius: 5px; margin-left: 10px;">Search</button>
+        <button onclick="window.seeker()" style="height: 50px; border-radius: 5px; margin-left: 40px;">Search</button>
 
       </div>
       <p1 style="color: slategrey; font-size: 14px;">*this is a SPECIFIC field, i.e searching "LDLR" will ONLY show LDLR and NOT other entries such as LDLRAP1, LDLRAD1, etc</p1>

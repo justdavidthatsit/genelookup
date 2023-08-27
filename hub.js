@@ -4,7 +4,7 @@
 // explained in 2* is what's being checked for/notes on     //
 // each following entry with a 2* at the end and so on.     //
 
-async function tableSearcher(gne, mut, mut2, mut1p){
+async function tableSearcher(gne, values, mutnumppl){
   const groups = await fetch("newdata.json"); //bioconvert.json
   const groupData = await groups.json();
   var filterd = []
@@ -13,12 +13,55 @@ async function tableSearcher(gne, mut, mut2, mut1p){
 
   for (var i=0; i<groupData.length; i++){
     gne = gne.toLowerCase()
-    mut = mut.toLowerCase()
-    mut2 = mut2.toLowerCase()
-    mut1p = mut1p
+    values = values
+    const valuespattern = new RegExp(String.raw`\b(?:${values.join('|')})\b`);
+    mutnumppl = mutnumppl
+
     var name = groupData[i].Gene.toLowerCase() // <<< - "groupdata[i].THINGYOUWANTTOSEARCHTHROUGH.toLowerCase()" < - [NEW] maybe include a dependancy for what to search by?
     var mutation = groupData[i].Effect.toLowerCase()
-    var mut1person = groupData[i].N_HET
+    var mutinperson = groupData[i].N_HET
+
+    switch (name == gne) {
+      case true:
+        switch (mutnumppl>0) {
+          case true:
+            switch (values.length>0) {
+              case true:
+                console.log("# of ppl being "+mutnumppl+" AND u have values selected such as "+values);
+                //REACHED HERE IF: -NAME is given -MUTNUMPPL is given -VALUES are given
+                if (mutation.match(valuespattern) && mutnumppl == mutinperson) {
+                  filterd.push(groupData[i]);
+                };
+                break;
+              default:
+                console.log("# of ppl being "+mutnumppl+" and u dont have any values selected so we dont bother searching for specifics");
+                //REACHED HERE IF: -NAME is given -MUTNUMPPL is given
+                if (mutnumppl == mutinperson) {
+                  filterd.push(groupData[i]);
+                };
+                break;
+            }
+            break;
+          default:
+            console.log("u do NOT want a specific # of ppl because u have a value of "+mutnumppl);
+            switch (values.length>0) {
+              case true:
+                //REACHED HERE IF: -NAME is given -VALUES are given
+                if (mutation.match(valuespattern)) {
+                  filterd.push(groupData[i]);
+                };
+                break;
+              default:
+                //REACHED HERE IF: -NAME is given
+                filterd.push(groupData[i]);
+            }
+            break;
+        };
+        break;
+      case false:
+        break;
+    }
+    /*
     switch (mut1p) { //2* checking for if you only want mutations present in 1 person
       case true:
         switch (mut2) { //3* checking for if there is a second mutation you want to search for
@@ -48,6 +91,7 @@ async function tableSearcher(gne, mut, mut2, mut1p){
             break;
         }
     }
+    */
   }
   filterd.sort((a, b) => {
     //return (( a.AF_HA+a.N_HET_HA )-( b.AF_HA+b.N_HET_HA )) // <<< - this is where you put the formula, maybe include dependancy for what to sort itby
@@ -111,20 +155,23 @@ function tableBuilder(data){
 
 async function seeker(){
   var q = document.getElementById("genesearchbox").value;
-  var mut = document.getElementById("mutationsearchbox").value;
-  var mut2 = document.getElementById("mutationsearchbox2").value;
-  var mut1person = document.getElementById("mutations1personbox").checked;
+  var values = [];
+  var checkboxes = document.querySelectorAll('input[name="mutationoption"]:checked');
+  var mutinnumofppl = document.getElementById("numinhowmanyppl").value;
   if(q.length<1){
-    console.log("thats not doing anything");
+    console.log("thats not doing anything THIS IS FROM THE IF STATEMENT IN THE SEEKER");
     return;
   } else {
-  console.log(q, mut, mut2, mut1person);
-  var data
-  tableSearcher(q, mut, mut2, mut1person).then(x=>{
-    data = x
-    console.log(data);
-    tableBuilder(data);
-  });
+    checkboxes.forEach((checkbox) => {
+      values.push(checkbox.value);
+    });
+    console.log(q, values, mutinnumofppl);
+    var data
+    tableSearcher(q, values, mutinnumofppl).then(x=>{
+      data = x
+      console.log(data);
+      tableBuilder(data);
+    });
   }
 };
 
