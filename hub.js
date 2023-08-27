@@ -27,14 +27,12 @@ async function tableSearcher(gne, values, mutnumppl){
           case true:
             switch (values.length>0) {
               case true:
-                console.log("# of ppl being "+mutnumppl+" AND u have values selected such as "+values);
                 //REACHED HERE IF: -NAME is given -MUTNUMPPL is given -VALUES are given
                 if (mutation.match(valuespattern) && mutnumppl == mutinperson) {
                   filterd.push(groupData[i]);
                 };
                 break;
               default:
-                console.log("# of ppl being "+mutnumppl+" and u dont have any values selected so we dont bother searching for specifics");
                 //REACHED HERE IF: -NAME is given -MUTNUMPPL is given
                 if (mutnumppl == mutinperson) {
                   filterd.push(groupData[i]);
@@ -43,7 +41,6 @@ async function tableSearcher(gne, values, mutnumppl){
             }
             break;
           default:
-            console.log("u do NOT want a specific # of ppl because u have a value of "+mutnumppl);
             switch (values.length>0) {
               case true:
                 //REACHED HERE IF: -NAME is given -VALUES are given
@@ -61,37 +58,6 @@ async function tableSearcher(gne, values, mutnumppl){
       case false:
         break;
     }
-    /*
-    switch (mut1p) { //2* checking for if you only want mutations present in 1 person
-      case true:
-        switch (mut2) { //3* checking for if there is a second mutation you want to search for
-          case "no":
-            if (mut1person==1 && name == gne && mutation.includes(mut)){ //1* changed "name.includes(gne)" to "name == gne" for SPECIFIC search
-              filterd.push(groupData[i])
-            };
-            break;
-          default:
-            if (name == gne && mut1person==1 && (mutation.includes(mut) || mutation.includes(mut2))){ //1*
-              filterd.push(groupData[i])
-            };
-            break;
-        }
-      break
-      case false:
-        switch (mut2) { //3*
-          case "no":
-            if (name == gne && mutation.includes(mut)){ //1*
-              filterd.push(groupData[i])
-            }
-            break;
-          default:
-            if (name == gne && (mutation.includes(mut) || mutation.includes(mut2))){ //1*
-              filterd.push(groupData[i])
-            }
-            break;
-        }
-    }
-    */
   }
   filterd.sort((a, b) => {
     //return (( a.AF_HA+a.N_HET_HA )-( b.AF_HA+b.N_HET_HA )) // <<< - this is where you put the formula, maybe include dependancy for what to sort itby
