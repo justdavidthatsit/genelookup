@@ -38,13 +38,13 @@
         <form name="GetData" id="getData" style="display: flex; flex-direction: column;" onSubmit="return false;">
           <br>
           <div>
-            <label for="genesearchbox">Gene*:</label> <!-- screen reader accessibility -->
-            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="CFAP74">
+            <label for="genesearchbox">numCHROM*:</label> <!-- screen reader accessibility -->
+            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="1">
           </div>
 
           <!-- MUTATION SEARCH FIELD -->
           <br>
-          <div>
+          <div style="display: none;"> <!-- DISPLAY NONE TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY -->
             <label for="mutationsearchbox">Mutation:</label><br> <!-- screen reader accessibility -->
             <label for="ms1">
               <input type="checkbox" name="mutationoption" value="frameshift" id="ms1"> frameshift
@@ -88,7 +88,7 @@
 
           <!-- MUTATIONS PRESENT IN ONLY X PEOPLE SEARCH FIELD -->
           <br>
-          <div>
+          <div style="display: none;"> <!-- DISPLAY NONE TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY TEMPORARY -->
             <label for="mutations1personbox">Number of mutations present in how many people?<span><br></span>(leave blank or 0 if you don't want to search for this)</label> <!-- screen reader accessibility -->
             <input style="width: 80px;" type="number" min="0" oninput="validity.valid||(value='');" id="numinhowmanyppl" placeholder="" name="mutations1personbox" value="">
           </div>
@@ -106,36 +106,19 @@
       <table id="example" class="table-sortable">
         <thead>
           <tr>
-            <th>SNP</th>
-            <th>CHR</th>
+            <th>numCHROM</th>
             <th>POS</th>
             <th>ID</th>
             <th>REF</th>
             <th>ALT</th>
-            <th>Effect</th>
-            <th>AnyIsLof</th>
-            <th>Deleterious</th>
-            <th>Gene</th>
-            <th>FracTrAffected</th>
-            <th>HGVSc</th>
-            <th>HGVSp</th>
-            <th>N_HOM</th>
-            <th>N_HET</th>
-            <th>N_REF</th>
-            <th>AF</th>
-            <th>N_HOM_AA</th>
-            <th>N_HET_AA</th>
-            <th>N_REF_AA</th>
-            <th>AF_AA</th>
-            <th>N_HOM_EA</th>
-            <th>N_HET_EA</th>
-            <th>N_REF_EA</th>
-            <th>AF_EA</th>
-            <th>N_HOM_HA</th>
-            <th>N_HET_HA</th>
-            <th>N_REF_HA</th>
-            <th>AF_HA</th>
-            <th>HWE deviation</th>
+            <th>QUAL</th>
+            <th>FILTER</th>
+            <th>INFO</th>
+            <th>FORMAT</th>
+            <th>COUNTof00</th>
+            <th>COUNTofMISSINGDATA</th>
+            <th>COUNTof01</th>
+            <th>COUNTof11</th>
           </tr>
         </thead>
         <div id="loader" style="display: none">Loading...</div>
