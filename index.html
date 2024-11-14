@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>gfinder</title>
+  <title>genefinder</title>
   <meta name="description" content="doing some testing">
   <meta name="author" content="david kvasyuk">
-  <meta property="og:title" content="gfinder">
+  <meta property="og:title" content="genefinder">
   <meta property="og:type" content="website">
   <!-- <meta property="og:url" content="PUTAURLHEREWHENYOUGETONE"> -->
   <meta property="og:description" content="doing some testing">
@@ -29,8 +29,7 @@
     <div id="intro">
 
       <div style="display: flex; align-items: center;">
-        <img src="img/iconxD.webp" alt="WIP logo" style="width: 40px; height: 40px;">
-        <h1>gfinder testing site</h1>
+        <h1>Gene Searcher</h1>
       </div>
 
       <div style="display: flex; align-items: center;">
@@ -38,8 +37,8 @@
         <form name="GetData" id="getData" style="display: flex; flex-direction: column;" onSubmit="return false;">
           <br>
           <div>
-            <label for="genesearchbox">numCHROM*:</label> <!-- screen reader accessibility -->
-            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="1">
+            <label for="genesearchbox">ID includes:</label> <!-- screen reader accessibility -->
+            <input type="text" id="genesearchbox" placeholder="Enter gene here" minlength="1" required name="genesubmission" value="C:T">
           </div>
 
           <!-- MUTATION SEARCH FIELD -->
@@ -98,7 +97,8 @@
         <button onclick="window.seeker()" style="height: 50px; border-radius: 5px; margin-left: 40px;">Search</button>
 
       </div>
-      <p1 style="color: slategrey; font-size: 14px;">*this is a SPECIFIC field, i.e searching "LDLR" will ONLY show LDLR and NOT other entries such as LDLRAP1, LDLRAD1, etc</p1>
+      <p1 style="color: slategrey; font-size: 14px;">*for now this list will be displaying LEAST to GREATEST in "COUNTof11"</p1>
+      <p1 style="color: slategrey; font-size: 14px;">KNOWN ISSUE: Nothing for now!</p1>
 
 
     </div>

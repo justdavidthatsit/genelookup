@@ -1,9 +1,9 @@
 :root {
   --main-text: #C4C4C4;
-  --t-highlight: #a8ffc9;
-  --background: #151818;
-  --backgroundbutlessharsh: #222929;
-  --linefortable: #353d35;
+  --t-highlight: #47b5ff;
+  --background: #20232c;
+  --backgroundbutlessharsh: #ffffff;
+  --linefortable: #ffffff;
 }
 
 html,
@@ -32,7 +32,7 @@ body {
   align-items: center;
 }
 #tablecontainer {
-  padding: 10px
+  padding: 10px;
 }
 
 table {
