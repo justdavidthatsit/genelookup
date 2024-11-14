@@ -3,12 +3,11 @@ async function tableSearcher(gne, values, mutnumppl){
   const groupData = await groups.json();
   var filterd = []
 
-  for (var i=0; i<10000; i++){ //var i=0; i<groupData.length; i++     <- we're only running 1k for now as to not overload
+  for (var i=0; i<groupData.length; i++){ //var i=0; i<groupData.length; i++  <- default - we're only running 1k for now as to not overload ->  var i=0; i<10000; i++
     gne = gne
     values = values
     const valuespattern = new RegExp(String.raw`\b(?:${values.join('|')})\b`);
     mutnumppl = mutnumppl
-
     var name = groupData[i].ID // <<< - maybe include a dependancy for what to search by?
 
     switch (name.includes(gne)) {
