@@ -40,6 +40,8 @@ table {
   border-color: var(--t-highlight);
   border-width: 1px;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 table th {
@@ -51,4 +53,19 @@ table td {
   border-bottom: 1px solid var(--linefortable);
   border-right: 1px solid var(--backgroundbutlessharsh);
   padding: 5px 5px;
+}
+
+tbody tr:hover {
+  background-color: #3e4457;
+}
+
+tbody tr:active {
+  background-color: #3e5743;
+}
+
+.dropdown {
+  background-color:#000000;
+}
+.dropdown:hover {
+  background-color: #0a0a0a;
 }
